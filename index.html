@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18+ NSFW Page</title>
+    <style>
+        /* Base styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .warning {
+            background-color: #f39c12;
+            padding: 30px;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #fff;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            background-color: #ff6600;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background-color: #e65c00;
+        }
+        
+        .content-wrapper {
+            display: none;
+            padding: 20px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        /* Category Select */
+        .category-select {
+            padding: 10px 15px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #ff6600;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 200px;
+            display: block;
+            margin: 0 auto 30px auto;
+        }
+        
+        .category-select:hover {
+            background-color: #444;
+        }
+        
+        #media {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        /* Image Styling */
+        #media img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        #media img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9);
+        }
+        
+        .image-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .download-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #ff6600;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .download-btn:hover {
+            background-color: #e65c00;
+        }
+
+        /* Full-screen styling */
+        .full-screen {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            z-index: 9999;
+            cursor: pointer;
+        }
+        
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        .close-btn:hover {
+            background-color: rgba(255, 0, 0, 0.7);
+        }
+        
+        /* Loading Styles */
+        .loading {
+            text-align: center;
+            color: #ff6600;
+            font-size: 1.5rem;
+            margin-top: 40px;
+        }
+
+        /* Progress bar loader */
+        .progress-bar-container {
+            width: 100%;
+            max-width: 300px;
+            height: 10px;
+            background-color: #333;
+            margin: 20px auto;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #ff6600;
+            animation: progress 5s linear infinite;
+        }
+        @keyframes progress {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Warning message -->
+    <div class="warning">
+        <h1>This is an adult website</h1>
+        <p>This website contains age-restricted materials including nudity and explicit depictions of sexual activity. By entering, you affirm that you are at least 18 years of age or the age of majority in the jurisdiction you are accessing the website from and you consent to viewing sexually explicit content.</p>
+    </div>
+
+    <!-- Verify button -->
+    <button class="btn" id="verify-btn">I am 18 or older</button>
+
+    <!-- Loading spinner -->
+    <div class="loading" id="loading-spinner" style="display: none;">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        <p>Loading content...</p>
+    </div>
+
+    <!-- Content wrapper -->
+    <div class="content-wrapper" id="content">
+        <h2>NSFW Content Below</h2>
+
+        <!-- Category selection dropdown -->
+        <select class="category-select" id="category-select">
+            <option value="boobs">Boobs</option>
+            <option value="4k">4K</option>
+            <option value="anal">Anal</option>
+            <option value="ass">Ass</option>
+            <option value="blowjob">Blowjob</option>
+            <option value="hentai">Hentai</option>
+            <option value="hentai_anal">Hentai Anal</option>
+            <option value="pgif">PGIF</option>
+            <option value="pussy">Pussy</option>
+        </select>
+
+        <div id="media"></div>
+        <button class="btn" id="load-more-btn">Load More</button>
+    </div>
+
+    <script>
+        const verifyBtn = document.getElementById('verify-btn');
+        const content = document.getElementById('content');
+        const warning = document.querySelector('.warning');
+        const mediaDiv = document.getElementById('media');
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        const categorySelect = document.getElementById('category-select');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+        let imageCount = 6; // Number of images to load each time
+
+        // Function to get the image URL based on selected category
+        function getImageUrl(category) {
+            return `https://nekobot.xyz/api/image?type=${category}`;
+        }
+
+        // Lazy loading function for images
+        function loadRandomImages(count) {
+            const selectedCategory = categorySelect.value;
+            const apiUrl = getImageUrl(selectedCategory);
+
+            // Show loading spinner until content is loaded
+            loadingSpinner.style.display = 'block';
+
+            for (let i = 0; i < count; i++) {
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        const imageUrl = data.message;
+                        const imgElement = document.createElement('img');
+                        imgElement.src = imageUrl;
+                        imgElement.alt = 'NSFW Image';
+                        imgElement.classList.add('lazy');
+                        imgElement.onload = () => imgElement.classList.add('loaded'); // Fade in once loaded
+                        imgElement.onclick = () => openFullScreen(imgElement);
+
+                        // Create a download button and trigger automatic download when clicked
+                        const downloadBtn = document.createElement('button');
+                        downloadBtn.textContent = 'Download';
+                        downloadBtn.classList.add('download-btn');
+                        downloadBtn.onclick = () => downloadImage(imageUrl);
+
+                        // Add the image and download button to the media div
+                        const imageWrapper = document.createElement('div');
+                        imageWrapper.classList.add('image-container');
+                        imageWrapper.appendChild(imgElement);
+                        imageWrapper.appendChild(downloadBtn);
+                        mediaDiv.appendChild(imageWrapper);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching image:', error);
+                        // Skip adding failed images to the DOM
+                    });
+            }
+
+            // Hide loading spinner after images are loaded
+            loadingSpinner.style.display = 'none';
+        }
+
+        // Function to automatically download the image
+        function downloadImage(url) {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'image.jpg'; // You can change the file name here
+            a.click();
+        }
+
+        // Function to open image in full-screen mode
+        function openFullScreen(imgElement) {
+            const fullScreenImg = document.createElement('img');
+            fullScreenImg.src = imgElement.src;
+            fullScreenImg.classList.add('full-screen');
+            fullScreenImg.onclick = () => closeFullScreen(fullScreenImg);
+
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = 'X';
+            closeBtn.classList.add('close-btn');
+            closeBtn.onclick = () => closeFullScreen(fullScreenImg);
+
+            document.body.appendChild(fullScreenImg);
+            document.body.appendChild(closeBtn);
+        }
+
+        // Function to close full-screen view
+        function closeFullScreen(fullScreenImg) {
+            document.body.removeChild(fullScreenImg);
+            const closeBtn = document.querySelector('.close-btn');
+            document.body.removeChild(closeBtn);
+        }
+
+        // Display content after verifying age
+        verifyBtn.addEventListener('click', () => {
+            content.style.display = 'block';
+            warning.style.display = 'none';
+            loadRandomImages(imageCount);  // Load initial set of images
+        });
+
+        // Load more images when the "Load More" button is clicked
+        loadMoreBtn.addEventListener('click', () => {
+            loadRandomImages(imageCount);  // Load additional images
+        });
+
+        // Reload images based on selected category when the dropdown is changed
+        categorySelect.addEventListener('change', () => {
+            mediaDiv.innerHTML = ''; // Clear existing images
+            loadRandomImages(imageCount); // Load new images based on selected category
+        });
+
+    </script>
+
+</body>
+</html>
