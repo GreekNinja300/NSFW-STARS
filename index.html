@@ -754,20 +754,16 @@
 
         // Function to trigger download
         function triggerDownload(url) {
-            console.log(`Attempting to trigger download for: ${url}`);
-            const link = document.createElement('a');
-            link.href = url;
-            // Suggest a filename. Try to get the filename from the URL if possible,
-            // otherwise use a generic one.
-            const urlParts = url.split('/');
-            const suggestedFileName = urlParts[urlParts.length - 1] || 'downloaded_image.jpg';
-            link.download = suggestedFileName; // Suggest a default filename, include extension
+    console.log(`Attempting to open in new tab for: ${url}`);
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = "_blank"; // Add this line to open in a new tab
 
-            document.body.appendChild(link); // Temporarily add to DOM
-            link.click(); // Programmatically click the link
-            document.body.removeChild(link); // Remove the link
-            console.log(`Download link clicked and removed for ${suggestedFileName}.`);
-        }
+    document.body.appendChild(link); // Temporarily add to DOM
+    link.click(); // Programmatically click the link
+    document.body.removeChild(link); // Remove the link
+    console.log(`Link clicked and removed for ${url}. Opened in new tab.`);
+}
 
 
         // Function to open image in full screen overlay
