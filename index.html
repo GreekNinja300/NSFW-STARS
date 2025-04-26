@@ -3,123 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>18+ NSFW Zone</title>
+    <title>Unlock the Zone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        /* Pornhub-like Styling */
+        /* Fortnite/Hentai Blend Styling */
         body {
-            font-family: 'Roboto Condensed', sans-serif;
-            background-color: #181818;
-            color: #eee;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #7f00ff, #e100ff); /* Vibrant gradient background */
+            color: #fff; /* White text */
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            position: relative; /* Για να τοποθετήσουμε το βέλος απολύτως */
+            position: relative;
+            overflow-x: hidden; /* Prevent horizontal scroll from effects */
         }
 
         h1, h2 {
-            color: #ff8c00;
+            font-family: 'Bangers', cursive; /* Cartoonish heading font */
+            color: #ffff00; /* Neon yellow */
+            text-shadow: 3px 3px #ff1493; /* Pink shadow */
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         .warning {
-            background-color: #222;
-            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent dark background */
+            backdrop-filter: blur(8px); /* Blur effect */
+            padding: 50px 30px; /* More padding */
             font-size: 1.2rem;
             text-align: center;
-            color: #eee;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.6); /* Neon pink shadow */
+            margin-bottom: 40px;
+            max-width: 600px;
+            width: 90%;
+            border: 3px dashed #ffff00; /* Dashed yellow border */
+            position: relative; /* For pseudo-elements */
+            overflow: hidden; /* Hide overflow for border effects */
+             display: flex; /* Ensure it's a flex container */
+             flex-direction: column; /* Stack children */
+             justify-content: center; /* Center vertically */
+             align-items: center; /* Center horizontally */
+        }
+
+        /* Corner graphic elements (Anime/Manga panel style) */
+        .warning::before,
+        .warning::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #ff0000; /* Red accent */
+            z-index: 1;
+        }
+         .warning::before { top: -5px; left: -5px; border-right: none; border-bottom: none; }
+         .warning::after { bottom: -5px; right: -5px; border-left: none; border-top: none; }
+
+
+        .warning h1 {
+             margin-top: 0;
+             font-size: 3rem; /* Larger heading */
+             margin-bottom: 25px;
         }
 
         .warning p {
-            margin-bottom: 15px;
+            margin-bottom: 30px;
+            line-height: 1.8;
         }
 
         .btn-container {
             display: flex;
-            gap: 15px;
-            margin-top: 15px;
+            justify-content: center;
+            gap: 30px; /* Larger gap */
+            margin-top: 30px;
         }
 
         .btn {
-            padding: 10px 20px;
-            background-color: #ff8c00;
-            color: white;
-            font-size: 1rem;
+            padding: 15px 35px; /* More padding */
+            font-size: 1.3rem; /* Larger font */
             border: none;
-            border-radius: 3px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px; /* Spacing */
+            box-shadow: 4px 4px 0 #000; /* 3D effect */
+            position: relative;
+            overflow: hidden; /* For hover effects */
         }
 
-        .btn:hover {
-            background-color: #e67e00;
+        /* Button hover animation (Fortnite style) */
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.3s ease;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        #verify-btn {
+            background-color: #39ff14; /* Neon green */
+            color: #000;
+        }
+
+        #verify-btn:hover {
+            background-color: #27ae60; /* Darker green */
+            transform: translate(2px, 2px); /* Move for 3D effect */
+            box-shadow: 2px 2px 0 #000;
         }
 
         #exit-btn {
-            background-color: #d9534f;
+            background-color: #ff0000; /* Red */
+            color: #fff;
         }
 
         #exit-btn:hover {
-            background-color: #c9302c;
+            background-color: #cc0000; /* Darker red */
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #000;
         }
 
         .content-wrapper {
-            display: none;
-            padding: 20px;
-            max-width: 1200px;
-            width: 100%;
-            border-radius: 5px;
-            background-color: #222;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            display: none; /* Hidden by default */
+            padding: 40px;
+            max-width: 1600px;
+            width: 95%;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark */
+            backdrop-filter: blur(6px);
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+            margin-top: 30px;
+            border: 3px solid #1abc9c; /* Teal border */
         }
 
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            text-align: center;
+        .content-wrapper h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ffff00; /* Yellow underline */
+            text-shadow: 2px 2px #ff69b4; /* Hot pink shadow */
         }
+
+        .category-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+         .category-container label {
+             font-size: 1.3rem;
+             color: #ecf0f1;
+             margin-right: 15px;
+         }
+
 
         .category-select {
-            padding: 10px 15px;
-            background-color: #333;
-            color: #eee;
-            border: 1px solid #ff8c00;
-            font-size: 1rem;
-            border-radius: 3px;
+            padding: 12px 25px; /* More padding */
+            background-color: rgba(44, 62, 80, 0.9); /* Darker blue-gray with transparency */
+            color: #ecf0f1;
+            border: 2px solid #1abc9c; /* Teal border */
+            font-size: 1.1rem;
+            border-radius: 6px;
             cursor: pointer;
-            width: 250px;
-            display: block;
-            margin: 0 auto 20px auto;
+            width: 300px; /* Wider */
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231abc9c%22%20d%3D%22M287%2C114.7L159.5%2C242.2c-3.2%2C3.2-7.4%2C4.9-11.7%2C4.9s-8.5-1.7-11.7-4.9L5.4%2C114.7c-6.5-6.5-6.5-17%2C0-23.5s17-6.5%2C23.5%2C0l130.3%2C130.3l130.3-130.3c6.5-6.5%2C17-6.5%2C23.5%2C0S293.5%2C108.2%2C287%2C114.7z%22%2F%3E%3C%2Fsvg%3E'); /* Custom teal arrow */
+            background-repeat: no-repeat;
+            background-position: right 18px center; /* Adjusted arrow position */
+            background-size: 16px; /* Larger arrow */
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .category-select:hover {
-            background-color: #444;
+             border-color: #ffff00; /* Yellow on hover */
         }
+
+        .category-select:focus {
+            border-color: #ff1493; /* Pink on focus */
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+        }
+
 
         #media {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-            margin-bottom: 60px; /* Δημιουργία χώρου για το βέλος */
-        }
-
-        #media img {
-            width: 100%;
-            height: auto;
-            border-radius: 3px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-            transition: transform 0.1s ease-in-out;
-            cursor: pointer;
-        }
-
-        #media img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.7);
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Larger min width */
+            gap: 25px; /* Larger gap */
+            margin-top: 30px;
+            padding-bottom: 100px; /* Space for back to top */
         }
 
         .image-container {
@@ -127,45 +210,114 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: rgba(52, 73, 94, 0.9); /* Blue-gray with transparency */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 2px solid #ff1493; /* Pink border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .image-container:hover {
+             transform: translateY(-10px) rotate(2deg); /* Lift and slightly rotate */
+             box-shadow: 0 15px 25px rgba(255, 20, 147, 0.8); /* Stronger neon shadow */
+             border-color: #ffff00; /* Yellow border on hover */
+        }
+
+
+        #media img {
+            width: 100%;
+            height: 220px; /* Slightly larger fixed height */
+            display: block;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+            cursor: zoom-in; /* Cursor indicates clicking image does something */
+            transition: opacity 0.3s ease;
+        }
+
+         #media img:hover {
+             opacity: 0.8; /* Slight dim on hover */
+         }
+
+
         .download-btn {
-            margin-top: 8px;
-            padding: 8px 15px;
-            background-color: #555;
-            color: #eee;
-            font-size: 0.9rem;
+            width: 100%;
+            padding: 14px 0; /* Larger padding */
+            background-color: #3498db; /* Lighter blue button */
+            color: white;
+            font-size: 1.1rem;
             border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.2s;
+            border-radius: 0 0 8px 8px;
+            cursor: pointer; /* Cursor indicates clicking button does something */
+            transition: background-color 0.2s ease;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+             z-index: 2; /* Ensure button is above the image */
+             position: relative; /* Needed for z-index to work relative to sibling img */
         }
 
         .download-btn:hover {
-            background-color: #777;
+            background-color: #2980b9;
         }
 
         .timer {
-            font-size: 1rem;
-            color: #ff8c00;
+            font-size: 1.2rem;
+            color: #ecf0f1; /* Light gray text */
             text-align: center;
-            margin-top: 15px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px dashed #ff1493; /* Pink dashed border */
         }
+
+        /* Style for the time value span */
+        .timer .time-value {
+            color: #ffff00; /* Yellow color for the number */
+            font-weight: 700;
+        }
+
+        /* Keyframes for the pulse animation */
+        @keyframes time-pulse {
+            0% { color: #ffff00; transform: scale(1); } /* Start color and size */
+            50% { color: #39ff14; transform: scale(1.1); } /* Middle color (green) and slight scale */
+            100% { color: #ffff00; transform: scale(1); } /* End color and size */
+        }
+
+        /* Class to apply the animation */
+        .timer .time-value.animate-pulse {
+            animation: time-pulse 0.5s ease-out; /* Apply animation */
+        }
+
 
         .loading {
             text-align: center;
-            color: #ff8c00;
-            font-size: 1.2rem;
-            margin-top: 30px;
+            color: #39ff14; /* Neon green */
+            font-size: 1.8rem; /* Larger */
+            margin-top: 50px;
+            animation: pulse 1.5s infinite alternate; /* Pulsing animation */
         }
 
+        .loading i {
+             margin-right: 15px;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(1.05); opacity: 0.8; }
+        }
+
+
+        /* Full screen image view */
         .full-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95); /* Very dark overlay */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -173,64 +325,109 @@
         }
 
         .full-screen img {
-            max-width: 95%;
-            max-height: 95%;
-            border-radius: 3px;
-            box-shadow: none;
+            max-width: 98%;
+            max-height: 98%;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(255, 20, 147, 0.7); /* Neon pink shadow */
             transform: none;
+            object-fit: contain;
         }
 
         .close-btn {
             position: absolute;
-            top: 15px;
-            right: 20px;
+            top: 25px; /* More space */
+            right: 25px; /* More space */
             background: none;
             border: none;
-            color: #eee;
-            font-size: 1.5rem;
+            color: #ffff00; /* Yellow close button */
+            font-size: 2.5rem; /* Much larger */
             cursor: pointer;
             z-index: 1001;
+            transition: color 0.2s ease, transform 0.2s ease;
+            text-shadow: 2px 2px #ff1493; /* Pink shadow */
+        }
+
+        .close-btn:hover {
+            color: #ff1493; /* Pink on hover */
+            transform: rotate(90deg); /* Rotate effect */
         }
 
         #load-more-btn {
-            padding: 10px 20px;
-            background-color: #333;
-            color: #eee;
-            font-size: 1rem;
+            display: block;
+            margin: 40px auto;
+            padding: 16px 40px; /* Largest padding */
+            background-color: #ff1493; /* Hot pink button */
+            color: white;
+            font-size: 1.4rem; /* Largest font */
             border: none;
-            border-radius: 3px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 4px 4px 0 #000; /* 3D effect */
+             position: relative;
+             overflow: hidden; /* For hover effects */
+        }
+         #load-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.3s ease;
+        }
+         #load-more-btn:hover::before {
+            left: 0;
         }
 
+
         #load-more-btn:hover {
-            background-color: #555;
+            background-color: #c71585; /* Darker pink */
+             transform: translate(2px, 2px);
+             box-shadow: 2px 2px 0 #000;
         }
+
+         #load-more-btn:disabled {
+             background-color: #6a5acd; /* Muted purple when disabled */
+             cursor: not-allowed;
+             transform: none;
+             opacity: 0.7;
+              box-shadow: 4px 4px 0 #000;
+        }
+
 
         /* Back to top arrow */
         .back-to-top {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #ff8c00;
-            color: #eee;
-            width: 40px;
-            height: 40px;
-            border-radius: 5px;
+            bottom: 30px; /* More space */
+            right: 30px; /* More space */
+            background-color: #ffff00; /* Yellow */
+            color: #000; /* Black arrow */
+            width: 60px; /* Larger */
+            height: 60px; /* Larger */
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5rem;
+            font-size: 2.5rem; /* Larger arrow */
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
+            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.3s ease;
             z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 3px solid #ff1493; /* Pink border */
         }
 
         .back-to-top:hover {
-            background-color: #e67e00;
+            background-color: #ffef00; /* Lighter yellow */
+            transform: scale(1.1) rotate(10deg); /* Scale and rotate */
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.8);
+             border-color: #39ff14; /* Green border on hover */
         }
 
         .back-to-top.show {
@@ -238,41 +435,43 @@
             visibility: visible;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 
     <div class="warning">
-        <h1>ENTER THE NSFW ZONE</h1>
-        <p>This website contains age-restricted materials. By entering, you affirm that you are at least 18 years of age or the age of majority in your jurisdiction.</p>
+        <h1>DANGER ZONE!</h1>
+        <p>Proceed with caution! This area contains content intended only for adults 18 years or older. Are you ready?</p>
         <div class="btn-container">
-            <button class="btn" id="verify-btn">I AM 18+</button>
-            <button class="btn" id="exit-btn">I AM UNDER 18</button>
+            <button class="btn" id="verify-btn">I'M READY!</button>
+            <button class="btn" id="exit-btn">NOPE!</button>
         </div>
     </div>
 
     <div class="loading" id="loading-spinner" style="display: none;">
-        <p>Loading content...</p>
+        <p><i class="fas fa-spinner fa-spin"></i> Loading Power-Ups...</p>
     </div>
 
     <div class="content-wrapper" id="content">
-        <h2>WELCOME!</h2>
+        <h2>Level Up Your Content!</h2>
         <p id="user-stats" class="timer"></p>
-        <select class="category-select" id="category-select">
-            <option value="random">RANDOM</option>
-            <option value="boobs">BOOBS</option>
-            <option value="4k">4K</option>
-            <option value="anal">ANAL</option>
-            <option value="ass">ASS</option>
-            <option value="blowjob">BLOWJOB</option>
-            <option value="hentai">HENTAI</option>
-            <option value="hentai_anal">HENTAI ANAL</option>
-            <option value="pgif">PGIF</option>
-            <option value="pussy">PUSSY</option>
-        </select>
-        <div id="media"></div>
-        <button class="btn" id="load-more-btn">LOAD MORE</button>
+        <div class="category-container">
+            <label for="category-select">Select Your Mission:</label>
+            <select class="category-select" id="category-select">
+                <option value="random">Mystery Box</option>
+                <option value="boobs">Boob Loot</option>
+                <option value="4k">Ultra HD Drop</option>
+                <option value="anal">Backdoor Access</option>
+                <option value="ass">Booty Bounty</option>
+                <option value="blowjob">Oral Ops</option>
+                <option value="hentai">Anime Art Pack</option>
+                <option value="hentai_anal">Anime Anal Pack</option>
+                <option value="pgif">Animated Loopers</option>
+                <option value="pussy">Pussy Power-Up</option>
+            </select>
+        </div>
+        <div id="media">
+            </div>
+        <button class="btn" id="load-more-btn">Grab More Loot!</button>
     </div>
 
     <div class="back-to-top">
@@ -291,10 +490,25 @@
         const userStats = document.getElementById('user-stats');
         const backToTopBtn = document.querySelector('.back-to-top');
 
-        let imageCount = 18;
-        let loading = false;
-        const allCategories = ["boobs", "4k", "anal", "ass", "blowjob", "hentai", "hentai_anal", "pgif", "pussy"];
+        // --- Debugging: Check if elements were found ---
+        if (!verifyBtn) console.error("Debug Error: Verify button (#verify-btn) not found!");
+        if (!exitBtn) console.error("Debug Error: Exit button (#exit-btn) not found!");
+        if (!content) console.error("Debug Error: Content wrapper (#content) not found!");
+        if (!warning) console.error("Debug Error: Warning div (.warning) not found!");
+        if (!mediaDiv) console.error("Debug Error: Media div (#media) not found!");
+        if (!loadMoreBtn) console.error("Debug Error: Load More button (#load-more-btn) not found!");
+        if (!categorySelect) console.error("Debug Error: Category select (#category-select) not found!");
+        if (!loadingSpinner) console.error("Debug Error: Loading spinner (#loading-spinner) not found!");
+        if (!userStats) console.error("Debug Error: User stats (#user-stats) not found!");
+        if (!backToTopBtn) console.error("Debug Error: Back to top button (.back-to-top) not found!");
+        // --- End Debugging Checks ---
 
+
+        let imageCount = 24; // Number of images to load per request
+        let loading = false;
+        const apiCategories = ["boobs", "4k", "anal", "ass", "blowjob", "hentai", "hentai_anal", "pgif", "pussy"]; // Categories available from API
+
+        // User stats management
         const user = {
             visits: parseInt(localStorage.getItem('visits') || '0', 10),
             firstVisit: localStorage.getItem('firstVisit') || new Date().toISOString(),
@@ -305,147 +519,390 @@
         let timerInterval;
 
         function updateStats() {
-            const now = new Date();
-            const firstVisitDate = new Date(user.firstVisit);
-            user.timeOnline += 1;
+            user.timeOnline += 1; // Increment time online by 1 second
 
-            const stats = `First visit: ${firstVisitDate.toLocaleString()}<br>
-                            Time online now: ${user.timeOnline} seconds<br>
-                            Total visits: ${user.visits}`;
-            userStats.innerHTML = stats;
+            // Create the HTML for the stats, wrapping the time online in a span
+            const statsHtml = `First drop: ${new Date(user.firstVisit).toLocaleString()}<br>
+                               Survival time this round: <span class="time-value">${user.timeOnline}</span> seconds<br>
+                               Total missions completed: ${user.visits}`;
+
+            userStats.innerHTML = statsHtml; // Update the stats text
+
+            // --- Animation Logic for Time Online ---
+            const timeValueSpan = userStats.querySelector('.time-value');
+            if (timeValueSpan) {
+                // Remove the animation class to reset it
+                timeValueSpan.classList.remove('animate-pulse');
+                // Trigger reflow - this is a trick to restart the CSS animation
+                void timeValueSpan.offsetWidth; // Don't remove this line!
+                // Add the animation class back
+                timeValueSpan.classList.add('animate-pulse');
+            }
+            // --- End Animation Logic ---
+
 
             localStorage.setItem('timeOnline', user.timeOnline);
         }
 
         function saveUserStats() {
-            user.visits += 1;
-            localStorage.setItem('visits', user.visits);
-            localStorage.setItem('firstVisit', user.firstVisit);
+             console.log("Saving user stats...");
+            // Check if this is a new session or the very first visit
+            if (!sessionStorage.getItem('visitedThisSession')) {
+                 user.visits += 1;
+                 localStorage.setItem('visits', user.visits);
+                 sessionStorage.setItem('visitedThisSession', 'true'); // Mark session as visited
+                 console.log("Incremented total visits.");
+            } else {
+                 console.log("Session already visited, not incrementing total visits.");
+            }
+
+            // Update last visit time and ensure firstVisit is set
             user.lastVisit = new Date().toISOString();
             localStorage.setItem('lastVisit', user.lastVisit);
+             if (!localStorage.getItem('firstVisit')) {
+                 localStorage.setItem('firstVisit', user.firstVisit);
+                  console.log("Set first visit timestamp.");
+             }
+             // Reset timeOnline for the new session or continue if already ongoing
+             // No need to reset timeOnline here if the user verified mid-session.
+             // The timerInterval handles ongoing time. We ensure it starts/continues.
+             // Let's just make sure localStorage has the current (potentially 0) timeOnline
+             localStorage.setItem('timeOnline', user.timeOnline);
+              console.log("Updated last visit timestamp and current timeOnline in localStorage.");
         }
 
-        verifyBtn.addEventListener('click', () => {
-            saveUserStats();
-            updateStats();
-            content.style.display = 'block';
-            warning.style.display = 'none';
-            timerInterval = setInterval(updateStats, 1000);
-            loadImages(imageCount);
-        });
+        // Age verification button listeners
+        if (verifyBtn && warning && content && userStats) { // Check if elements were found before adding listeners
+             verifyBtn.addEventListener('click', () => {
+                console.log("Verify button clicked! Executing verification...");
+                saveUserStats(); // Save stats on entry
+                updateStats(); // Initial stats display
+                content.style.display = 'block'; // Show content
+                warning.style.display = 'none'; // Hide warning
+                console.log("Display switched. Starting timer and loading images.");
+                // Clear any existing timer before starting a new one
+                if (timerInterval) clearInterval(timerInterval);
+                timerInterval = setInterval(updateStats, 1000); // Start the timer
+                loadImages(imageCount); // Load initial images
+                 sessionStorage.setItem('verified', 'true'); // Mark session as verified
+                 console.log("Verification process complete. Session marked verified.");
+            });
+        } else {
+            console.error("Debug Error: Could not attach Verify button listener. One or more required elements not found.");
+        }
 
-        exitBtn.addEventListener('click', () => {
-            window.location.href = 'https://www.google.com';
-        });
 
+        if (exitBtn) { // Check if exit button was found
+             exitBtn.addEventListener('click', () => {
+                console.log("Exit button clicked! Redirecting to Google...");
+                window.location.href = 'https://www.google.com'; // Redirect on exit
+            });
+        } else {
+             console.error("Debug Error: Could not attach Exit button listener. Element not found.");
+        }
+
+
+        // Function to fetch a single image from the API
         async function fetchImage(category) {
-            let apiUrl = `https://nekobot.xyz/api/image?type=${category}`;
+            let apiUrl;
+            let type = category;
             if (category === 'random') {
-                const randomCategory = allCategories[Math.floor(Math.random() * allCategories.length)];
-                apiUrl = `https://nekobot.xyz/api/image?type=${randomCategory}`;
+                type = apiCategories[Math.floor(Math.random() * apiCategories.length)];
             }
+             apiUrl = `https://nekobot.xyz/api/image?type=${type}`;
+
+            console.log(`Workspaceing image for category: ${type} from ${apiUrl}`);
+
             try {
                 const response = await fetch(apiUrl);
                 if (!response.ok) {
-                    console.error(`Error fetching image: ${response.status}`);
-                    return null;
+                    console.error(`API Error: ${response.status} - ${response.statusText} for category ${type}`);
+                    return null; // API call failed
                 }
                 const data = await response.json();
-                return data.message;
+                if (data.message) {
+                     console.log(`Successfully fetched image URL for category ${type}: ${data.message}`);
+                    return data.message; // Return image URL
+                } else {
+                    console.error(`API Error: Response for category ${type} did not contain image URL:`, data);
+                    return null;
+                }
+
             } catch (error) {
-                console.error('Error fetching image:', error);
-                return null;
+                console.error('Network Error fetching image:', error);
+                return null; // Network or other error
             }
         }
 
+        // Function to load a specified number of images
         async function loadImages(count) {
-            if (loading) return;
+            if (loading) {
+                console.log("Already loading, ignoring loadImages call.");
+                return; // Prevent multiple concurrent loads
+            }
             loading = true;
-            loadMoreBtn.disabled = true;
-            loadingSpinner.style.display = 'block';
+            loadMoreBtn.disabled = true; // Disable button while loading
+            loadingSpinner.style.display = 'block'; // Show loading spinner
+            console.log(`Starting to load ${count} images...`);
 
             const selectedCategory = categorySelect.value;
+            const imagesToLoad = [];
 
+            // Fetch images concurrently
             for (let i = 0; i < count; i++) {
-                const imageUrl = await fetchImage(selectedCategory);
+                imagesToLoad.push(fetchImage(selectedCategory));
+            }
+
+            const results = await Promise.all(imagesToLoad);
+            console.log(`Finished fetching ${results.length} image URLs (some might be null).`);
+
+
+            // Process results and add to DOM
+            results.forEach(async imageUrl => { // Use async here to await fetchImage for retry
                 if (imageUrl) {
                     const imgElement = document.createElement('img');
                     imgElement.src = imageUrl;
-                    imgElement.alt = 'NSFW Image';
-                    imgElement.classList.add('lazy');
-                    imgElement.onclick = () => openFullScreen(imgElement);
+                    imgElement.alt = 'Adult Content';
+                    imgElement.classList.add('media-image');
+                    // console.log(`Created img element for: ${imageUrl}`); // Too many logs potentially
+
+                    // --- Error Handling ---
+                    imgElement.onerror = async function() {
+                        console.warn('Image failed to load in browser:', imgElement.src);
+                        const imageWrapper = imgElement.parentElement; // Get the parent div
+                         // Check if this image element is still in the DOM before trying to access parent
+                         if (!document.body.contains(imgElement)) {
+                             console.log('Image element already removed from DOM, skipping onerror logic.');
+                             return; // Exit if element is not in DOM anymore
+                         }
+
+
+                        if (imageWrapper && imageWrapper.dataset.retryCount === undefined) {
+                             // First attempt failed, try fetching a random image once
+                            imageWrapper.dataset.retryCount = '1'; // Mark as retried
+                            console.log('Attempting to replace failed image with a NEW random one...');
+
+                             // Remove the onerror handler temporarily to prevent infinite loops if the SAME URL fails repeatedly
+                             const originalOnError = imgElement.onerror;
+                             imgElement.onerror = null; // Temporarily disable handler
+
+                            const newImageUrl = await fetchImage('random'); // <<< Fetching a NEW random image
+
+                            if (newImageUrl && newImageUrl !== imgElement.src) {
+                                console.log('Successfully fetched DIFFERENT replacement image. Updating src.');
+                                imgElement.src = newImageUrl; // Update the src, onerror might trigger again if this one fails
+                                 // Re-attach onerror handler for the new URL
+                                 imgElement.onerror = originalOnError;
+                            } else {
+                                console.log('Replacement image fetch failed or returned the SAME (likely broken) URL. Removing card.');
+                                // Replacement failed or was the same broken URL, remove the card
+                                if (imageWrapper) {
+                                    imageWrapper.remove();
+                                    console.log('Card removed after failed replacement attempt.');
+                                }
+                            }
+                        } else {
+                            // Retry attempt failed, remove the card
+                            console.log('Image failed AGAIN on retry (or already retried). Removing card.');
+                             const imageWrapper = imgElement.parentElement; // Get parent again in case it changed (unlikely but safe)
+                            if (imageWrapper) {
+                                imageWrapper.remove();
+                                console.log('Card removed after second image load failure.');
+                            }
+                        }
+                    };
+                    // --- End Error Handling ---
+
+
+                    // Listener for clicking the image to open full screen
+                    imgElement.addEventListener('click', () => {
+                         console.log("Image clicked! Opening full screen.");
+                         openFullScreen(imageUrl);
+                    });
 
                     const downloadBtn = document.createElement('button');
                     downloadBtn.textContent = 'DOWNLOAD';
                     downloadBtn.classList.add('download-btn');
+                    // Listener for clicking the download button
                     downloadBtn.addEventListener('click', (event) => {
-                        event.stopPropagation();
-                        openInNewTab(imageUrl);
+                        console.log("Download button clicked! Attempting download.");
+                        event.stopPropagation(); // !!! IMPORTANT: PREVENT EVENT FROM BUBBLING TO IMAGE !!!
+                        console.log("Event propagation stopped.");
+                        // Call the download function
+                        triggerDownload(imageUrl);
                     });
 
                     const imageWrapper = document.createElement('div');
                     imageWrapper.classList.add('image-container');
+                    // Append button first or image first doesn't matter for structure,
+                    // but z-index helps ensure button is clickable on top of the image.
                     imageWrapper.appendChild(imgElement);
-                    imageWrapper.appendChild(downloadBtn);
+                    imageWrapper.appendChild(downloadBtn); // Append button after image
                     mediaDiv.appendChild(imageWrapper);
+                     // console.log("Added image card to DOM."); // Too many logs potentially
+
+                } else {
+                    console.warn("Received null or empty image URL from API. Skipping adding a card for this one.");
                 }
-            }
+            });
 
-            loadingSpinner.style.display = 'none';
-            loadMoreBtn.disabled = false;
+            loadingSpinner.style.display = 'none'; // Hide loading spinner
+            loadMoreBtn.disabled = false; // Re-enable button
             loading = false;
+            console.log("Finished loading images.");
         }
 
-        function openInNewTab(url) {
-            window.open(url, '_blank');
+        // Function to trigger download
+        function triggerDownload(url) {
+            console.log(`Attempting to trigger download for: ${url}`);
+            const link = document.createElement('a');
+            link.href = url;
+            // Suggest a filename. Try to get the filename from the URL if possible,
+            // otherwise use a generic one.
+            const urlParts = url.split('/');
+            const suggestedFileName = urlParts[urlParts.length - 1] || 'downloaded_image.jpg';
+            link.download = suggestedFileName; // Suggest a default filename, include extension
+
+            document.body.appendChild(link); // Temporarily add to DOM
+            link.click(); // Programmatically click the link
+            document.body.removeChild(link); // Remove the link
+            console.log(`Download link clicked and removed for ${suggestedFileName}.`);
         }
 
-        function openFullScreen(imgElement) {
+
+        // Function to open image in full screen overlay
+        function openFullScreen(imageUrl) {
+             console.log(`Opening full screen for: ${imageUrl}`);
             const fullScreenDiv = document.createElement('div');
             fullScreenDiv.classList.add('full-screen');
 
             const img = document.createElement('img');
-            img.src = imgElement.src;
+            img.src = imageUrl;
+            img.alt = 'Full Screen Image';
             fullScreenDiv.appendChild(img);
 
             const closeBtn = document.createElement('button');
             closeBtn.textContent = 'X';
             closeBtn.classList.add('close-btn');
-            closeBtn.onclick = () => closeFullScreen(fullScreenDiv);
+            closeBtn.addEventListener('click', () => closeFullScreen(fullScreenDiv));
             fullScreenDiv.appendChild(closeBtn);
 
+            // Close on clicking the overlay itself
+            fullScreenDiv.addEventListener('click', (event) => {
+                if (event.target === fullScreenDiv) {
+                    console.log("Clicked outside image in full screen, closing.");
+                    closeFullScreen(fullScreenDiv);
+                }
+            });
+
             document.body.appendChild(fullScreenDiv);
+             console.log("Full screen overlay added to DOM.");
         }
 
+        // Function to close full screen overlay
         function closeFullScreen(fullScreenDiv) {
-            document.body.removeChild(fullScreenDiv);
+             console.log("Closing full screen.");
+            // Check if fullScreenDiv is actually in the body before trying to remove
+            if (document.body.contains(fullScreenDiv)) {
+                document.body.removeChild(fullScreenDiv);
+                 console.log("Full screen overlay removed from DOM.");
+            } else {
+                 console.log("Full screen overlay not found in DOM, nothing to remove.");
+            }
         }
 
-        loadMoreBtn.addEventListener('click', () => {
-            loadImages(imageCount);
-        });
+        // Load More button event listener
+        if (loadMoreBtn) { // Check if element was found
+             loadMoreBtn.addEventListener('click', () => {
+                console.log("Load More button clicked!");
+                loadImages(imageCount); // Load more images
+            });
+        } else {
+             console.error("Debug Error: Could not attach Load More button listener. Element not found.");
+        }
 
-        categorySelect.addEventListener('change', () => {
-            mediaDiv.innerHTML = '';
-            loadImages(imageCount);
-        });
 
-        // Show/hide back to top button
+        // Category selection change listener
+        if (categorySelect) { // Check if element was found
+             categorySelect.addEventListener('change', () => {
+                const selectedCategory = categorySelect.value;
+                console.log(`Category changed to: ${selectedCategory}. Clearing media and loading new images.`);
+                mediaDiv.innerHTML = ''; // Clear current images
+                loadImages(imageCount); // Load new images for the selected category
+            });
+         } else {
+             console.error("Debug Error: Could not attach Category select listener. Element not found.");
+         }
+
+
+        // Show/hide back to top button based on scroll position
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('show');
+            if (window.scrollY > 600) { // Show button after scrolling down 600px
+                 if (backToTopBtn) backToTopBtn.classList.add('show');
             } else {
-                backToTopBtn.classList.remove('show');
+                 if (backToTopBtn) backToTopBtn.classList.remove('show');
             }
         });
 
-        // Scroll to top on click
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        // Scroll to top when back to top button is clicked
+        if (backToTopBtn) { // Check if element was found
+            backToTopBtn.addEventListener('click', () => {
+                console.log("Back to top button clicked.");
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth' // Smooth scrolling animation
+                });
             });
-        });
+        } else {
+            console.error("Debug Error: Could not attach Back to top button listener. Element not found.");
+        }
+
+
+        // Initial setup: Check if user has already verified in this session to bypass age gate
+        console.log("Checking session verification status...");
+        if (sessionStorage.getItem('verified')) {
+             console.log("Session verified. Bypassing age gate.");
+             if (warning) warning.style.display = 'none';
+             if (content) {
+                content.style.display = 'block';
+                 // Re-initialize timeOnline for the session
+                 user.timeOnline = parseInt(localStorage.getItem('timeOnline') || '0', 10);
+                 updateStats(); // Display stats
+                 // Clear any existing timer before starting a new one
+                 if (timerInterval) clearInterval(timerInterval);
+                 timerInterval = setInterval(updateStats, 1000); // Start the timer
+                 loadImages(imageCount); // Load initial images
+             } else {
+                 console.error("Debug Error: Content wrapper not found during session bypass.");
+             }
+        } else {
+            console.log("Session not verified. Showing age gate.");
+             // Ensure warning is visible and content is hidden initially
+             if (warning) warning.style.display = 'flex'; // Or 'block', based on its CSS display
+             if (content) content.style.display = 'none';
+        }
+         console.log("Initial setup complete.");
+
+
+         // Add subtle background pattern (optional)
+         const bodyElement = document.body;
+         const createPattern = () => {
+             const patternDiv = document.createElement('div');
+             patternDiv.style.position = 'fixed';
+             patternDiv.style.top = '0';
+             patternDiv.style.left = '0';
+             patternDiv.style.width = '100%';
+             patternDiv.style.height = '100%';
+             patternDiv.style.zIndex = '-1';
+             patternDiv.style.opacity = '0.1';
+             patternDiv.style.pointerEvents = 'none';
+             patternDiv.style.backgroundImage = 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org%2F2000%2Fsvg\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M25 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm9-3h50v10H34v-10zM80 0a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM10 40a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm5-5h50v10H15v-10zM75 30a15 15 0 1 0 0 30 15 15 0 0 0 0-30zM20 75a15 15 0 1 0 0 30 15 15 0 0 0 0-30zm5-5h50v10H25v-10zM90 70a10 10 0 1 0 0 20 10 10 0 0 0 0-20z\' fill-rule=\'evenodd\'/%3E%3C/g%3E%3C/svg%3E")';
+             bodyElement.appendChild(patternDiv);
+         };
+         // Uncomment the line below to add a subtle pattern to the background
+         // createPattern();
+
+
     </script>
 
 </body>
